@@ -1,0 +1,20 @@
+{
+  "name": "christmas_list_app",
+  "version": "1.0.0",
+  "description": "MERN Stack app that tracks a family's Christmas list for each family member.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Brian Tatum",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^5.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
