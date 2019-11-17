@@ -4,8 +4,12 @@
   "description": "MERN Stack app that tracks a family's Christmas list for each family member.",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
+    "client-build": "npm run build --prefix client",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Brian Tatum",
   "license": "MIT",
