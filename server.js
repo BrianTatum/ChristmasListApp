@@ -14,6 +14,8 @@ mongoose
 	.then(() => console.log("MongoDB connected."))
 	.catch(error => console.log(error));
 
+//App Routes
+app.use('/users', require('./routes/user'));
 
 //Start express server.
 const port = 5000;
