@@ -2,20 +2,29 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import { Container } from 'reactstrap';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import AppNavBar from './components/AppNavBar';
 import Footer from './components/Footer';
+import LogIn from './components/LogIn';
+import EditUser from './components/EditUser';
 
 function App() {
   return (
-    <div className="App d-flex flex-column" >
-    	<AppNavBar />
-    	<Container className='main-area'>
-    		<h1>Hello World</h1>
-    	</Container>
-    	<Footer />
-    </div>
+  	<div className="App d-flex flex-column" >
+	  	<Router>
+	  		<AppNavBar />
+	  		<Switch>
+	  			<Route exact path="/">
+	  				<LogIn />
+	  			</Route>
+	  			<Route path='/newuser'>
+	  				<EditUser />
+	  			</Route>
+	  		</Switch>
+	  		<Footer />
+	  	</Router>
+  	</div>
   );
 }
 

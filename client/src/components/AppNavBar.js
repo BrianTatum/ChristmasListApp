@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem,
-		 NavLink, Container} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav,
+		 NavItem, Container} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export default class AppNavBar extends Component {
 	static propTypes = {
@@ -28,9 +29,9 @@ export default class AppNavBar extends Component {
 						<Collapse isOpen={isOpen} navbar>
 							<Nav className='ml-auto' navbar>
 								<NavItem>
-									<NavLink href='/'>
-										Temp
-									</NavLink>
+									<Link to='/newuser' className="nav-link">
+										New User
+									</Link>
 								</NavItem>
 							</Nav>
 						</Collapse>
