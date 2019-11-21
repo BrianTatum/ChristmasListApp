@@ -14,7 +14,7 @@ export default class AppNavBar extends Component {
 		super(props);
 
 		this.state = {
-			isOpen: true,
+			isOpen: false,
 		}
 	}
 
