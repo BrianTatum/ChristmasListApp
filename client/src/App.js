@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import AppNavBar from './components/AppNavBar';
 import Footer from './components/Footer';
 import LogIn from './components/LogIn';
+import NewUser from './components/NewUser';
 import EditUser from './components/EditUser';
 import ListUsers from './components/ListUsers';
 
@@ -29,10 +30,13 @@ function App() {
 		  				<LogIn />
 		  			</Route>
 		  			<Route path='/newuser'>
-		  				<EditUser />
+		  				<NewUser />
 		  			</Route>
 		  			<Route path='/userlist'>
 		  				<ListUsers />
+		  			</Route>
+		  			<Route path='/edituser'>
+		  				<EditUser />
 		  			</Route>
 		  		</Switch>
 		  		<Footer />

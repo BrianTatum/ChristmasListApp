@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { Container } from 'reactstrap';
 
 import UserForm from './EditUserComps/UserForm';
 
-export default class EditUser extends Component {
+class NewUser extends React.Component {
 	static propTypes = {
 		name: PropTypes.string,
 	};
 
 	constructor(props) {
 		super(props);
-
-		this.state = {}
 	}
 
 	render() {
-		const { user } this.props;
 		return (
 			<Container className="main-area">
 		    	<div className="row">
 		    		<div className="col">
-		    			<h1>Edit User Info
-		    			</h1>
+		    			<h1 className='text-center'>Create New User</h1>
 		    		</div>
 		    	</div>
 		    	<UserForm user={{}} />
@@ -31,3 +28,14 @@ export default class EditUser extends Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+
+	};
+}
+
+export default connect(
+	mapStateToProps,
+	{}
+)(NewUser)
