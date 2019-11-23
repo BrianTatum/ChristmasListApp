@@ -20,6 +20,10 @@ class ListUsers extends Component {
 		this.state = {	};
 	}
 
+	componentDidMount() {
+		this.props.getUsers();
+	}
+
 	render() {
 		const userList = this._makeUserList();
 

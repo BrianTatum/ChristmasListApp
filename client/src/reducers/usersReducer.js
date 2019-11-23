@@ -7,22 +7,13 @@ import {
 } from '../actions/types';
 
 const initState = {
-	users: [
-		{
-			firstName: "Brian",
-			lastName: "Tatum"
-		},
-		{
-			firstName: "Jana",
-			lastName: "Tatum",
-		}
-	],
+	users: [],
 };
 
 export default function(state = initState, action) {
 	switch (action.type) {
 		case GET_USERS:
-			return {...state}
+			return {...state, users: action.payload}
 		case CREATE_USER:
 			return {...state}
 		case SHOW_USER:
