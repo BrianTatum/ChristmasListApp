@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { Tooltip } from 'reactstrap';
 
 class FormField extends Component {
+	static defaultProps = {
+        errors: {}
+    }
+
 	constructor(props) {
 		super(props);
 
@@ -10,26 +14,19 @@ class FormField extends Component {
 
 		this.state = {
 			toolTipOpen: false,
-			errorList: this.props.errors || [],
+			errorList: this.props.errors || {},
 			hashId:  Math.floor((1 + Math.random()) * 0x10000)
     					.toString(16)
     					.substring(1),
 		}
 	}
 
-	componentWillReceiveProps(newProps) {
-		this.setState({
-			errorList:  newProps.errors || []
-		});
-	}
-
 	render() {
-		const { formLabel, propKey, propValue, onChange, placeholder, hideLabel} = this.props;
+		const { formLabel, propKey, propValue, onChange, placeholder, hideLabel, errors} = this.props;
 		const { hashId } = this.state;
-		const errorList = this.listErrors();
 		const inputType = this.props.password ? 'password' : 'text';
 		return (
-			<div className={this.state.errorList.length > 0 ? 'field_with_errors' : ''}>
+			<div className={errors.message ? 'field_with_errors' : ''}>
 				<div className="form-group" id={`${propKey}_errors_${hashId}`} onMouseOver={this.toggleToolTip}>
 					{ !hideLabel ? (<label className='font-weight-bold' htmlFor={propKey}>{formLabel}:</label>) : '' }
 					<input  id={`${propKey}_${Math.floor(Math.random() * 1000) + 1}`}
@@ -46,24 +43,18 @@ class FormField extends Component {
 							target={`${propKey}_errors_${hashId}`}
 							toggle={this.toggleToolTip}
 							style={{backgroundColor: 'white', color: 'red', borderColor: 'red', borderStyle: 'solid', borderWidth: 3}}>
-					{errorList}
+					<h5>{`${this.props.formLabel} ${errors.message}`}</h5>
 				</Tooltip>
 			</div>
 		);
 	}
 
 	toggleToolTip() {
-		if (this.state.errorList.length > 0) {
+		if (this.props.errors.message) {
 			this.setState({
 				toolTipOpen: !this.state.toolTipOpen 
 			});
 		}
-	}
-
-	listErrors() {
-		return this.state.errorList.map((error, i) => {
-			return <h5 className='text-left' key={i}>{`${this.props.formLabel} ${error}`}</h5>
-		})
 	}
 }
 
@@ -76,7 +67,7 @@ FormField.propTypes = {
 				]).isRequired,
 	onChange: PropTypes.func.isRequired,
 	placeholder: PropTypes.string.isRequired,
-	errors: PropTypes.array,
+	errors: PropTypes.object,
 	hideLabel: PropTypes.bool,
 };
 

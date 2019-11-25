@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+
 import { FormField } from '../common';
 
-export default class UserForm extends Component {
+class UserForm extends Component {
 	static propTypes = {
 		user: PropTypes.object,
+		formSubmit: PropTypes.func.isRequired,
 	};
 
 	constructor(props) {
@@ -13,15 +16,15 @@ export default class UserForm extends Component {
 
 		this.state = {
 			user: this.props.user,
-			errors: {},
 		}
 	}
 
 	render() {
-		const { user, errors } = this.state;
+		const { errors, formSubmit } = this.props;
+		const { user } = this.state;
 
 		return (
-			<form onSubmit={(e) => this._handleFormSubmit(e)}>
+			<form onSubmit={(e) => formSubmit(e, user)}>
 				<div className="row">
 					<div className="col">
 						<FormField	formLabel="Username"
@@ -103,9 +106,6 @@ export default class UserForm extends Component {
 			user: this.props.user, 
 		});
 	}
-
-	_handleFormSubmit = (e) => {
-		e.preventDefault();
-		alert('Submit Data!!')
-	}
 }
+
+export default UserForm;

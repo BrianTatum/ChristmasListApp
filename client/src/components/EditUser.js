@@ -17,7 +17,7 @@ export default class EditUser extends Component {
 	}
 
 	render() {
-		const { user } this.props;
+		const { user } = this.props;
 		return (
 			<Container className="main-area">
 		    	<div className="row">

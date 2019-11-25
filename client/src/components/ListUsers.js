@@ -53,8 +53,8 @@ class ListUsers extends Component {
 	}
 }
 
-const mapStateToProps = ({ user }) => ({
-	users: user.users,
+const mapStateToProps = ({ users }) => ({
+	users: users.users,
 })
 
 export default connect(

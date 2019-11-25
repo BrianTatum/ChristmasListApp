@@ -12,3 +12,10 @@ footer {
     flex-shrink: 0;
     flex-basis: auto;
 }
+
+.field_with_errors	label {
+		color: #dc3545;
+}
+.field_with_errors	input {
+		border-color: #dc3545;
+}
