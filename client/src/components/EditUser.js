@@ -13,16 +13,15 @@ import UserForm from './EditUserComps/UserForm';
 class EditUser extends Component {
 	static propTypes = {
 		user: PropTypes.object,
+		errors: PropTypes.object,
+		userSaved: PropTypes.bool,
+		userId: PropTypes.string,
+		updateUser: PropTypes.func.isRequired,
+		showUser: PropTypes.func.isRequired,
 	};
 
-	constructor(props) {
-		super(props);
-
-		this.state = {}
-	}
-
 	componentDidMount() {
-		const {userId, showUser, userSaved} = this.props;
+		const {userId, showUser} = this.props;
 		showUser(userId);
 	}
 

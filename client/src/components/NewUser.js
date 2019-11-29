@@ -12,12 +12,10 @@ import UserForm from './EditUserComps/UserForm';
 
 class NewUser extends Component {
 	static propTypes = {
-		name: PropTypes.string,
+		errors: PropTypes.object,
+		userSaved: PropTypes.bool,
+		creatUser: PropTypes.func.isRequire,
 	};
-
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		const { errors, userSaved } = this.props;

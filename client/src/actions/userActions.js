@@ -31,7 +31,7 @@ export const creatUser = (user) => {
 			 .then(({ data }) => {
 			 	if (data.userSaved) {
 			 		dispatch({
-			 			type: SHOW_USER,
+			 			type: CREATE_USER,
 			 			payload: data.user,
 			 		})
 			 	} else {
