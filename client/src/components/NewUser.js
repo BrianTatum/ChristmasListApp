@@ -14,7 +14,7 @@ class NewUser extends Component {
 	static propTypes = {
 		errors: PropTypes.object,
 		userSaved: PropTypes.bool,
-		creatUser: PropTypes.func.isRequire,
+		creatUser: PropTypes.func.isRequired,
 	};
 
 	render() {
