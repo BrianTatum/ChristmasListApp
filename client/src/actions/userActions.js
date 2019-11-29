@@ -27,19 +27,52 @@ export const getUsers = () => {
 // Action creates a new user on the server.
 export const creatUser = (user) => {
 	return (dispatch) => {
-		console.log('Sending Post req...');
 		Axios.post('./users', { user })
 			 .then(({ data }) => {
-			 	console.log(data);
 			 	if (data.userSaved) {
 			 		dispatch({
-			 			type: CREATE_USER,
+			 			type: SHOW_USER,
+			 			payload: data.user,
 			 		})
 			 	} else {
 			 		dispatch({
 			 			type: USER_SAVE_ERRORS,
 			 			payload: data.errors,
 			 		})
+			 	}
+			 }).catch(err => console.log(err));
+	}
+}
+
+// Action gets one user from server.
+export const showUser = (id) => {
+	return (dispatch) => {
+		Axios.get(`/users/${id}`)
+			 .then(({ data }) => {
+			 	console.log(data);
+			 	dispatch({
+			 		type: SHOW_USER,
+			 		payload: data.user,
+			 	})
+			 })
+	}
+}
+
+// Action updates user on the server.
+export const updateUser = (user) => {
+	return (dispatch) => {
+		Axios.put(`/users/${user._id}`, { user })
+			 .then(({ data }) => {
+			 	if (data.userSaved) {
+			 		dispatch({
+			 			type: UPDATE_USER,
+			 			payload: data.user,
+			 		});
+			 	} else {
+			 		dispatch({
+			 			type: USER_SAVE_ERRORS,
+			 			payload: data.errors,
+			 		});
 			 	}
 			 }).catch(err => console.log(err));
 	}

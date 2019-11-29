@@ -36,7 +36,7 @@ class ListUsers extends Component {
 				</div>
 				<div className="row">
 					<div className="col">
-						<ul className="list-unstyle">
+						<ul className="list-group">
 							{userList}
 						</ul>
 					</div>

@@ -23,7 +23,7 @@ class NewUser extends Component {
 		const { errors, userSaved } = this.props;
 
 		if (userSaved) {
-	      return <Redirect to='/userlist' />
+	      return <Redirect to='/users' />
 	    }
 
 		return (

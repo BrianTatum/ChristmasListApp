@@ -9,6 +9,7 @@ import {
 
 const initState = {
 	users: [],
+	curUser: {},
 	errors: {},
 	userSaved: false,
 };
@@ -30,7 +31,8 @@ export default function(state = initState, action) {
 				errors: {},
 			}
 		case SHOW_USER:
-			return {...state}
+			return {...state,
+					curUser: action.payload}
 		case DELETE_USER:
 			return {...state}
 		case USER_SAVE_ERRORS: 

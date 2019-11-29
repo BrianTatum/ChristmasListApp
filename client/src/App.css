@@ -19,3 +19,7 @@ footer {
 .field_with_errors	input {
 		border-color: #dc3545;
 }
+
+.list-group-item:hover {
+	background-color: #cccccc;
+}

@@ -44,7 +44,8 @@ router.post('/', (req, res) => {
 // Get one user object by id.
 router.get('/:id', (req, res) => {
 	User.findById(req.params.id)
-		.then(user => { res.json(user)})
+		.select("-password")
+		.then(user => { res.json({user})})
 		.catch(error => {
 			res.status(404).json({msg: 'User not found.'})
 		})
@@ -53,12 +54,13 @@ router.get('/:id', (req, res) => {
 // Route: 	PUT 	/user/:id
 // Updates a user in the database.
 router.put('/:id', (req, res) => {
+	console.log(`Id: ${req.params.id}`);
 	User.findById(req.params.id)
 		.then( user => {
-			const { firstName, lastName, username} = req.body;
-			user.firstName = firstName;
-			user.lastName = lastName;
-			user.username = username;
+			const { user: userUpdate } = req.body;
+			user.firstName = userUpdate.firstName;
+			user.lastName = userUpdate.lastName;
+			user.username = userUpdate.username;
 			user.save(error => {
 				if (error) {
 					res.status(404).json({userSaved: false})

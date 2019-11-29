@@ -32,10 +32,10 @@ function App() {
 		  			<Route path='/newuser'>
 		  				<NewUser />
 		  			</Route>
-		  			<Route path='/userlist'>
+		  			<Route path='/users'>
 		  				<ListUsers />
 		  			</Route>
-		  			<Route path='/edituser'>
+		  			<Route path='/edituser/:id'>
 		  				<EditUser />
 		  			</Route>
 		  		</Switch>
