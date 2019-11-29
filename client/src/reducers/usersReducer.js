@@ -31,10 +31,15 @@ export default function(state = initState, action) {
 				errors: {},
 			}
 		case SHOW_USER:
-			return {...state,
-					curUser: action.payload}
+			return {
+				...state,
+				curUser: action.payload
+			}
 		case DELETE_USER:
-			return {...state}
+			return {
+				...state,
+				users: action.payload,
+			}
 		case USER_SAVE_ERRORS: 
 			return {
 				...state,

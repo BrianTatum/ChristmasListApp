@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { getUsers } from '../actions/userActions.js';
+import { getUsers, deleteUser } from '../actions/userActions.js';
 
 import { Container } from 'reactstrap';
 
@@ -12,13 +12,8 @@ class ListUsers extends Component {
 	static propTypes = {
 		users: PropTypes.array,
 		getUsers: PropTypes.func.isRequired,
+		deleteUser: PropTypes.func.isRequired,
 	};
-
-	constructor(props) {
-		super(props);
-
-		this.state = {	};
-	}
 
 	componentDidMount() {
 		this.props.getUsers();
@@ -46,9 +41,9 @@ class ListUsers extends Component {
 	}
 
 	_makeUserList() {
-		const { users } = this.props;
+		const { users, deleteUser } = this.props;
 		return users.map(user => {
-			return <UserRow key={user._id} user={user} />
+			return <UserRow key={user._id} user={user} deleteUser={deleteUser} />
 		})
 	}
 }
@@ -59,5 +54,5 @@ const mapStateToProps = ({ users }) => ({
 
 export default connect(
 	mapStateToProps,
-	{getUsers}
+	{getUsers, deleteUser}
 )(ListUsers)

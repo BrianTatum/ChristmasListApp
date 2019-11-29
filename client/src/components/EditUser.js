@@ -52,7 +52,6 @@ class EditUser extends Component {
 
 	_handleFormSubmit = (e, user) => {
 		e.preventDefault();
-		console.log('Calling updateUser action...')
 		this.props.updateUser(user);
 	}
 }

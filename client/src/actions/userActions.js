@@ -77,3 +77,16 @@ export const updateUser = (user) => {
 			 }).catch(err => console.log(err));
 	}
 }
+
+// Action delete a user on the server.
+export const deleteUser = (userId) => {
+	return (dispatch) => {
+		Axios.delete(`/users/${userId}`)
+			 .then(({ data }) => {
+			 	dispatch({
+			 		type: DELETE_USER,
+			 		payload: data,
+			 	})
+			 }).catch(err => console.log(err));
+	}
+}

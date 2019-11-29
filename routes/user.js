@@ -76,8 +76,14 @@ router.put('/:id', (req, res) => {
 // Route: 	DELETE	/user/:id
 // Deletes a user from the database.
 router.delete('/:id', (req, res) => {
+	console.log(`Id: ${req.params.id}`);
 	User.findById(req.params.id)
-		.then(user => user.remove().then(() => res.json({success: true,})))
+		.then(user => user.remove()
+						  .then(() => {
+						  	User.find()
+								.sort({lastName: 1})
+								.then(items => res.json(items));
+						  }))
 		.catch(error => res.status(404).json({success: false}))
 });
 
