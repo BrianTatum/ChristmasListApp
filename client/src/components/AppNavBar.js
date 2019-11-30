@@ -22,7 +22,7 @@ export default class AppNavBar extends Component {
 		const { isOpen } = this.state;
 		return (
 			<div>
-				<Navbar color='dark' dark expand='sm' className='mb-5'>
+				<Navbar color='dark' dark expand='sm'>
 					<Container>
 						<NavbarBrand href='/'>Christmas List</NavbarBrand>
 						<NavbarToggler onClick={this._toggle}/>

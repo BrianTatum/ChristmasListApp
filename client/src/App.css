@@ -13,6 +13,14 @@ footer {
     flex-basis: auto;
 }
 
+.main-color-border {
+	border-color: #343a40;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 15px;
+    padding: 10px;
+}
+
 .field_with_errors	label {
 		color: #dc3545;
 }
