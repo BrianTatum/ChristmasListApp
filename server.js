@@ -16,6 +16,7 @@ mongoose
 
 //App Routes
 app.use('/users', require('./routes/user'));
+app.use('/auth', require('./routes/auth'));
 
 //Start express server.
 const port = 5000;
