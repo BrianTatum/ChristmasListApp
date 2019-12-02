@@ -61,6 +61,9 @@ router.put('/:id', (req, res) => {
 			user.firstName = userUpdate.firstName;
 			user.lastName = userUpdate.lastName;
 			user.username = userUpdate.username;
+			if (userUpdate.password && userUpdate.password ==  userUpdate.confirmPassword) {
+				user.password = hashPassword(userUpdate.password)
+			}
 			user.save(error => {
 				if (error) {
 					res.status(404).json({userSaved: false})
