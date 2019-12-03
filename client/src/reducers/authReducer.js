@@ -23,6 +23,7 @@ export default function(state = initState, action) {
 			return {
 				...state,
 				authToken: '',
+				user: {},
 				authMsg: {type: 'success', msg: 'You are now logged out!'},
 			}
 		case LOGIN_ERROR:
