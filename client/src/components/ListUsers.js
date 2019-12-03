@@ -6,6 +6,8 @@ import { getUsers, deleteUser } from '../actions/userActions.js';
 
 import { Container } from 'reactstrap';
 
+import { ScreenSize } from './common';
+
 import UserRow from './ListUsersComps/UserRow';
 
 class ListUsers extends Component {
@@ -36,6 +38,7 @@ class ListUsers extends Component {
 						</ul>
 					</div>
 				</div>
+				<ScreenSize />
 			</Container>
 		);
 	}
