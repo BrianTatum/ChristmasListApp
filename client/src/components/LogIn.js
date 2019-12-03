@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+//Redux Actions
+import { logInUser } from '../actions/authActions';
 
-import { Container } from 'reactstrap';
+import { Link, Redirect } from 'react-router-dom';
+
+import { Container, Alert } from 'reactstrap';
 
 import { FormField } from './common';
 
@@ -24,7 +27,17 @@ class LogIn extends Component {
 	}
 
 	render() {
+		const { authMsg, authToken } = this.props;
 		const { username, password, errors } = this.state;
+		const userMsg = (
+			<Alert color={authMsg.type}>
+				{authMsg.msg}
+			</Alert>
+		)
+
+		if (authToken) {
+	      return <Redirect to='/users' />
+	    }
 
 		return (
 			<Container className="main-area d-flex">
@@ -34,6 +47,7 @@ class LogIn extends Component {
 		    				<h1 className="text-center">Santa's Helper</h1>
 		    			</div>
 		    		</div>
+		    		{authMsg.msg ? userMsg : null}
 		    		<div className="row">
 		    			<div className="col-10 mx-auto">
 		    				<div className="main-color-border">
@@ -103,7 +117,8 @@ class LogIn extends Component {
 
 	_handleSubmit = (e) => {
 		e.preventDefault();
-		alert('Submit Login...');
+		const { username, password } = this.state;
+		this.props.logInUser(username, password);
 	}
 	_handleRest = () => {
 		this.setState({
@@ -120,13 +135,14 @@ class LogIn extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ auth }) => {
 	return {
-
+		authMsg: auth.authMsg,
+		authToken: auth.authToken,
 	};
 }
 
 export default connect(
 	mapStateToProps,
-	{}
+	{logInUser}
 )(LogIn)
