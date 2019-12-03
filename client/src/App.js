@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 //Redux State Manager
 import { Provider } from 'react-redux';
@@ -19,31 +19,25 @@ import NewUser from './components/NewUser';
 import EditUser from './components/EditUser';
 import ListUsers from './components/ListUsers';
 
-function App() {
-  return (
-  	<Provider store={store}>
-	  	<div className="App d-flex flex-column" >
-		  	<Router>
-		  		<AppNavBar />
-		  		<Switch>
-		  			<Route exact path="/">
-		  				<LogIn />
-		  			</Route>
-		  			<Route path='/newuser'>
-		  				<NewUser />
-		  			</Route>
-		  			<Route path='/users'>
-		  				<ListUsers />
-		  			</Route>
-		  			<Route path='/edituser/:id'>
-		  				<EditUser />
-		  			</Route>
-		  		</Switch>
-		  		<Footer />
-		  	</Router>
-	  	</div>
-	</Provider>
-  );
+class App extends Component {
+	render() {
+		return (
+			<Provider store={store}>
+			  	<div className="App d-flex flex-column" >
+				  	<Router>
+				  		<AppNavBar />
+				  		<Switch>
+				  			<Route exact path="/" component={LogIn} />
+				  			<Route path='/newuser' component={NewUser}/>
+				  			<Route path='/users' component={ListUsers}/>
+				  			<Route path='/edituser/:id' component={EditUser}/>
+				  		</Switch>
+				  		<Footer />
+				  	</Router>
+			  	</div>
+			</Provider>
+		)
+	}
 }
 
 export default App;
