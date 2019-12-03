@@ -12,8 +12,6 @@ const User = require('../models/user');
 // Checks a user's login and returns user token if valid.
 router.post('/', (req, res) => {
 	const { username, password } = req.body;
-	console.log(`Username: ${username}`);
-	console.log(`Password: ${password}`);
 	if ( !username || !password ) return res.status(400).json({msg: 'Username and Password required.'})
 
 	User.findOne({ username })
