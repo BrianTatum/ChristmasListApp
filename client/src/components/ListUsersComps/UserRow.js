@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const UserRow = ({ user, deleteUser }) => {
   return (
@@ -11,9 +12,9 @@ const UserRow = ({ user, deleteUser }) => {
 				</h4>
 	    	</div>
 	    	<div className="col col-md-3 col-lg">
-	    		<a href={`/edituser/${user._id}`} className="btn btn-success btn-block">
+	    		<Link to={`/edituser/${user._id}`} className="btn btn-success btn-block">
 	    			Edit
-	    		</a>
+	    		</Link>
 	    	</div>
 	    	<div className="col col-md-3 col-lg">
 	    		<button className="btn btn-danger btn-block"

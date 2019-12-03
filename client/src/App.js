@@ -12,6 +12,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 //App Comonents
+import PrivateRoute from './components/common/PrivateRoute';
 import AppNavBar from './components/AppNavBar';
 import Footer from './components/Footer';
 import LogIn from './components/LogIn';
@@ -29,8 +30,8 @@ class App extends Component {
 				  		<Switch>
 				  			<Route exact path="/" component={LogIn} />
 				  			<Route path='/newuser' component={NewUser}/>
-				  			<Route path='/users' component={ListUsers}/>
-				  			<Route path='/edituser/:id' component={EditUser}/>
+				  			<PrivateRoute path='/users' component={ListUsers}/>
+				  			<PrivateRoute path='/edituser/:id' component={EditUser}/>
 				  		</Switch>
 				  		<Footer />
 				  	</Router>
